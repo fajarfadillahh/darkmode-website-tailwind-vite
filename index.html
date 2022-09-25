@@ -4,12 +4,64 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Dark Mode Website Tailwindcss</title>
+
+    <!-- It's best to inline this in `head` to avoid FOUC (flash of unstyled content) when changing pages or themes -->
+    <script>
+      if (
+        localStorage.getItem("color-theme") === "dark" ||
+        (!("color-theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+
+    <!-- 🌙 ☀️ -->
   </head>
-  <body>
-    <h1 class="text-xl text-gray-800 text-center font-semibold">
-      This template is ready to use for your project!
-    </h1>
+  <body
+    class="w-full h-screen flex justify-center items-center bg-gray-50 dark:bg-gray-900"
+  >
+    <div class="content w-10/12 grid gap-4 sm:w-7/12 lg:w-5/12">
+      <!-- theme toggle -->
+      <button
+        id="theme-toggle"
+        type="button"
+        class="justify-self-start p-2 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+      >
+        <span class="text-lg cursor-pointer hidden" id="theme-toggle-dark-icon"
+          >🌙</span
+        >
+        <span class="text-lg cursor-pointer hidden" id="theme-toggle-light-icon"
+          >☀️</span
+        >
+      </button>
+
+      <!-- content data -->
+      <div
+        class="content__img w-full py-28 bg-gray-300 rounded-lg dark:bg-gray-700"
+      ></div>
+      <div
+        class="content__title w-9/12 py-5 bg-gray-300 rounded-lg dark:bg-gray-700"
+      ></div>
+      <div
+        class="content__text w-full py-3 bg-gray-300 rounded-lg dark:bg-gray-700"
+      ></div>
+      <div
+        class="content__text w-full py-3 bg-gray-300 rounded-lg dark:bg-gray-700"
+      ></div>
+      <div
+        class="content__text w-full py-3 bg-gray-300 rounded-lg dark:bg-gray-700"
+      ></div>
+      <div
+        class="content__tagline w-6/12 py-3 bg-gray-300 rounded-lg dark:bg-gray-700"
+      ></div>
+      <div
+        class="content__button w-full py-6 bg-green-600 rounded-lg mt-2"
+      ></div>
+    </div>
 
     <!-- ===== MAIN JS ===== -->
     <script type="module" src="./src/js/main.js"></script>
