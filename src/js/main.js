@@ -23,23 +23,11 @@ themeToggleBtn.addEventListener("click", () => {
   themeToggleDarkIcon.classList.toggle("hidden");
 
   // if set via local storage previously
-  if (localStorage.theme) {
-    if (localStorage.getItem("theme") === "light") {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-
-    // if NOT set via local storage previously
+  if (localStorage.theme === "light") {
+    document.documentElement.classList.add("dark");
+    localStorage.setItem("theme", "dark");
   } else {
-    if (document.documentElement.classList.contains("dark")) {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    } else {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    }
+    document.documentElement.classList.remove("dark");
+    localStorage.setItem("theme", "light");
   }
 });
